@@ -121,12 +121,12 @@ public class Application implements CommandLineRunner {
 			
 			for (int i = 1; i < 2; i++) {
 				Row header = helperExcel.getSheet().getRow(i);
-				eSertifikatCell = header.getCell(10);
+				eSertifikatCell = header.getCell(9);
 				if(eSertifikatCell==null) {
 					CellStyle style = helperExcel.getWorkbook().createCellStyle();
 		            style.setWrapText(true);
 		            
-		            eSertifikatCell = helperExcel.getSheet().getRow(i).createCell(10);
+		            eSertifikatCell = helperExcel.getSheet().getRow(i).createCell(9);
 		            eSertifikatCell.setCellStyle(style);
 		        }
 				
