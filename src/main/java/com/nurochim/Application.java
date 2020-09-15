@@ -53,7 +53,7 @@ public class Application implements CommandLineRunner {
             e.printStackTrace();
         } 
 
-        System.out.println("Done");
+        System.out.println("All job is Done");
 
     }
 
@@ -98,8 +98,8 @@ public class Application implements CommandLineRunner {
 
     }
    
-    String excelPath = "D:\\Kemenristek\\Webinar Brazil\\e-sertifikat\\Penerima e-Sertifikat Webinar versi tes.xlsx";
-	String attachmentPath = "D:\\Kemenristek\\Webinar Brazil\\e-sertifikat\\eSertifikat Peserta\\";
+    String excelPath = "D:\\Kemenristekdikti Awan\\2020\\Meeting dan Rapat Eksternal\\Webinar Virtual Brazil\\eSertifikat\\Penerima e-Sertifikat Webinar v6.xlsx";
+	String attachmentPath = "D:\\Kemenristekdikti Awan\\2020\\Meeting dan Rapat Eksternal\\Webinar Virtual Brazil\\eSertifikat\\Peserta\\";
 	
 	public void sendEmailWithAttachment() {
 		ExcelPOIHelper helperExcel = new ExcelPOIHelper();
@@ -116,10 +116,10 @@ public class Application implements CommandLineRunner {
 			// read sheet 2 email config
 			Sheet sheet2 = helperExcel.getWorkbook().getSheetAt(1);
 			Row rowEmailConfig = sheet2.getRow(2);
-			emailSubject = rowEmailConfig.getCell(0).getRichStringCellValue().getString()+" Test 1";
+			emailSubject = rowEmailConfig.getCell(0).getRichStringCellValue().getString();
 			emailMsg = rowEmailConfig.getCell(1).getRichStringCellValue().getString();
 			
-			for (int i = 1; i < 2; i++) {
+			for (int i = 201; i < 259; i++) {
 				Row header = helperExcel.getSheet().getRow(i);
 				eSertifikatCell = header.getCell(9);
 				if(eSertifikatCell==null) {
@@ -129,7 +129,7 @@ public class Application implements CommandLineRunner {
 		            eSertifikatCell = helperExcel.getSheet().getRow(i).createCell(9);
 		            eSertifikatCell.setCellStyle(style);
 		        }
-				
+				System.out.print("Row : "+i +" ");
 				List<String> rowDetails = mapRows.get(i);
 				emailAddress = "";
 				sertifikat = "";

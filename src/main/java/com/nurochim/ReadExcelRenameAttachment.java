@@ -10,8 +10,8 @@ import org.apache.poi.ss.usermodel.Row;
 import com.nurochim.poi.excel.ExcelPOIHelper;
 
 public class ReadExcelRenameAttachment {
-	private static String excelPath = "D:\\Kemenristek\\Webinar Brazil\\e-sertifikat\\Penerima e-Sertifikat Webinar versi tes.xlsx";
-	private static String attachmentPath = "D:\\Kemenristek\\Webinar Brazil\\e-sertifikat\\eSertifikat Peserta\\";
+	private static String excelPath = "D:\\Kemenristekdikti Awan\\2020\\Meeting dan Rapat Eksternal\\Webinar Virtual Brazil\\eSertifikat\\Penerima e-Sertifikat Webinar v6.xlsx";
+	private static String attachmentPath = "D:\\Kemenristekdikti Awan\\2020\\Meeting dan Rapat Eksternal\\Webinar Virtual Brazil\\eSertifikat\\Peserta\\";
 	
 	public static void main(String[] args) {
 		RenameFile renameFileHelper = new RenameFile();
@@ -25,6 +25,7 @@ public class ReadExcelRenameAttachment {
 			String newFilePath = "";
 			String prefixName = "eSertifikat_";
 			String ext = ".pdf";
+			String statusRename ="";
 			
 			
 			Map<Integer, List<String>> mapRows = helperExcel.readExcel(excelPath);
@@ -34,20 +35,29 @@ public class ReadExcelRenameAttachment {
 				sertifikat = "";
 				emailAddress = "";
 				emailMsg = "";
+				statusRename = "";
 				if(rowDetails.size() > 0) {
 					name = rowDetails.get(1).trim();
 					sertifikat = rowDetails.get(8).trim();
 					
+//					if(sertifikat.contains("eSertifikat_1-278")) {
+//						System.out.println(name + " " +sertifikat);
+//					}
+						
+//					if(false) {
 //					emailAddress = rowDetails.get(6).trim();
 //					emailMsg = rowDetails.get(9).trim();
-					oldFilePath = attachmentPath+sertifikat+ext;
+					oldFilePath = attachmentPath+sertifikat;
 					newFilePath = attachmentPath+prefixName+name+ext;
-					renameFileHelper.RenameFile(oldFilePath, newFilePath);
+					statusRename = renameFileHelper.RenameFile(oldFilePath, newFilePath);
 					
 					// write to cell
-					Row header = helperExcel.getSheet().getRow(i);
-					Cell eSertifikatCell = header.getCell(8);
-					eSertifikatCell.setCellValue(prefixName+name+ext);
+					if(statusRename.equals("Succes rename")) {
+						Row header = helperExcel.getSheet().getRow(i);
+						Cell eSertifikatCell = header.getCell(8);
+						eSertifikatCell.setCellValue(prefixName+name+ext);
+					}
+//					}
 				}
 			}
 			
