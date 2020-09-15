@@ -1,2 +1,11 @@
 
 *.class
+target/classes/android.png
+target/classes/application.properties
+target/classes/META-INF/MANIFEST.MF
+target/classes/META-INF/maven/org.springframework.boot/spring-boot-send-email/pom.properties
+target/classes/META-INF/maven/org.springframework.boot/spring-boot-send-email/pom.xml
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
